@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         
-        WebService.shared.invokeApi(stringURL: "http://irapi.argaam.com/v1.0/json/InvestorsRelation/CompanyInf",
+        WebService.shared.invokeApi(stringURL: URLs.companyInfoURL,
                                     requestType: .get,
                                     headers: Utils.getDefaultHeader(),
                                     BaseModel<CompanyInfo>.self) { (result) in

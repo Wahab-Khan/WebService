@@ -108,7 +108,12 @@ class WebService {
                             params postParams: Dictionary<String,AnyObject>?,
                             completion: @escaping (Result<Data,Error>) -> ()){
         
-        let url = URL(string: urlInString)
+    
+        let apiURL : String = URLs.baseUrl + urlInString
+        
+        print("API url string Complete : ",apiURL)
+        
+        let url = URL(string:apiURL)
         
         var request = URLRequest(url: url!)
         
@@ -138,8 +143,10 @@ class WebService {
             }
             
             if let respo = responce as? HTTPURLResponse{
-                print("You may check URL again : current URL : \(String(describing: respo.url!))")
                 print("Responce Code: \(String(describing: respo.statusCode))")
+                if respo.statusCode != 200 {
+                    print("You may check URL again : current URL : \(String(describing: respo.url!))")
+                }
             }
             
             guard let data = dataSet else {
