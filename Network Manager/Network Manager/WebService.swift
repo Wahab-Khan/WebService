@@ -88,7 +88,7 @@ class WebService {
                                 let data = try JSONDecoder().decode(dataModel.self, from: dataSet)
                                 Completerion(data)
                             }catch{
-                                print("Error while parsing : " , error)
+                                print("Error while parsing Data: " , error)
                             }
                         case .failure(let err):
                             print(err)
@@ -137,11 +137,10 @@ class WebService {
                 return
             }
             
-//            if let respo = responce{
-//                print("URL : \(String(describing: respo.url))")
-//                print("Complete responce : \(String(describing: responce))")
-//
-//            }
+            if let respo = responce as? HTTPURLResponse{
+                print("You may check URL again : current URL : \(String(describing: respo.url!))")
+                print("Responce Code: \(String(describing: respo.statusCode))")
+            }
             
             guard let data = dataSet else {
                 return
