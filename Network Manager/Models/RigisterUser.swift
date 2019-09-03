@@ -10,12 +10,12 @@ import Foundation
 
 
 struct RigisterUser : Decodable {
-    var WasSuccessful : String?
-    var ErrorMessage : String?
-    var Key : String?
-    var UserName : String?
-    var UserID : Int?
-    var PhotoURL : String?
-    var EmailAddress : String?
-    var userRank : Int?
+    var WasSuccessful : String = ""
+    var ErrorMessage : String = ""
+    var Key : String = ""
+    var UserName : String = ""
+    var UserID : Int = 0
+    var PhotoURL : String = ""
+    var EmailAddress : String = ""
+    var userRank : Int = 0
 }
