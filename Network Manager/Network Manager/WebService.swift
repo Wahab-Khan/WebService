@@ -25,7 +25,7 @@ class WebService {
     private init() {
     }
     
-    
+    //MARK: -  URL + Model
     func invokeApi<T:Decodable>(stringURL : String,
                                 _ dataModel : BaseModel<T>.Type,
                                 Completerion : @escaping (BaseModel<T>) -> ()){
@@ -34,12 +34,13 @@ class WebService {
                   requestType: .get,
                   headers: nil,
                   params: nil,
+                  body: nil,
                   dataModel,
                   Completerion: Completerion)
         
     }
     
-    
+      //MARK: - URL + Request method + Model
     func invokeApi<T:Decodable>(stringURL : String,
                                 requestType: RequestMethod,
                                 _ dataModel : BaseModel<T>.Type,
@@ -49,11 +50,30 @@ class WebService {
                   requestType: requestType,
                   headers: nil,
                   params: nil,
+                  body : nil,
                   dataModel,
                   Completerion: Completerion)
         
     }
     
+    //MARK: - URL + header + model
+    func invokeApi<T:Decodable>(stringURL : String,
+                                headers headerParams: Dictionary<String,String>?,
+                                _ dataModel : BaseModel<T>.Type,
+                                Completerion : @escaping (BaseModel<T>) -> ()){
+        
+        invokeApi(stringURL: stringURL,
+                  requestType: .get,
+                  headers: headerParams,
+                  params: nil,
+                  body: nil,
+                  dataModel,
+                  Completerion: Completerion)
+        
+    }
+    
+    
+    //MARK: - URL + request type + header + model
     func invokeApi<T:Decodable>(stringURL : String,
                                 requestType: RequestMethod,
                                 headers headerParams: Dictionary<String,String>?,
@@ -64,16 +84,56 @@ class WebService {
                   requestType: requestType,
                   headers: headerParams,
                   params: nil,
+                  body: nil,
                   dataModel,
                   Completerion: Completerion)
         
     }
     
-
+    
+     //MARK: - URL + request type + header + Params + model
     func invokeApi<T:Decodable>(stringURL : String,
                                 requestType: RequestMethod,
                                 headers headerParams: Dictionary<String,String>?,
-                                params postParams: Dictionary<String,AnyObject>?,
+                                params queryParams: Dictionary<String,String>?,
+                                _ dataModel : BaseModel<T>.Type,
+                                Completerion : @escaping (BaseModel<T>) -> ()){
+        
+        invokeApi(stringURL: stringURL,
+                  requestType: requestType,
+                  headers: headerParams,
+                  params: queryParams,
+                  body: nil,
+                  dataModel,
+                  Completerion: Completerion)
+        
+    }
+    
+    
+    //MARK: - URL + request type + header + body + model
+    func invokeApi<T:Decodable>(stringURL : String,
+                                requestType: RequestMethod,
+                                headers headerParams: Dictionary<String,String>?,
+                                body postBodyParams: Dictionary<String,AnyObject>?,
+                                _ dataModel : BaseModel<T>.Type,
+                                Completerion : @escaping (BaseModel<T>) -> ()){
+        
+        invokeApi(stringURL: stringURL,
+                  requestType: requestType,
+                  headers: headerParams,
+                  params: nil,
+                  body: postBodyParams,
+                  dataModel,
+                  Completerion: Completerion)
+        
+    }
+
+     //MARK: - URL + request type + header + param + body + model
+    func invokeApi<T:Decodable>(stringURL : String,
+                                requestType: RequestMethod,
+                                headers headerParams: Dictionary<String,String>?,
+                                params queryParams: Dictionary<String,String>?,
+                                body postBodyParams: Dictionary<String,AnyObject>?,
                                 _ dataModel : BaseModel<T>.Type,
                                 Completerion : @escaping (BaseModel<T>) -> ()){
         
@@ -81,7 +141,8 @@ class WebService {
         sendRequest(urlInString: stringURL,
                     requestType: requestType,
                     headers: headerParams,
-                    params: postParams) { (res) in
+                    params: queryParams,
+                    body: postBodyParams) { (res) in
                         switch res {
                         case .success(let dataSet):
                             do{
@@ -96,20 +157,24 @@ class WebService {
                         
         }
     }
-        
-    }
     
     
     
+    //MARK: - make request
     
     func sendRequest(urlInString : String,
                             requestType: RequestMethod,
                             headers headerParams: Dictionary<String,String>?,
-                            params postParams: Dictionary<String,AnyObject>?,
+                            params queryParams: Dictionary<String,String>?,
+                            body postBodyParams: Dictionary<String,AnyObject>?,
                             completion: @escaping (Result<Data,Error>) -> ()){
         
     
-        let apiURL : String = URLs.baseUrl + urlInString
+        var apiURL : String
+        apiURL = URLs.baseUrl + urlInString
+        if let query = queryParams {
+            apiURL = queryString(apiURL, params: query)!
+        }
         
         print("API url string Complete : ",apiURL)
         
@@ -127,7 +192,7 @@ class WebService {
             print("header is nill : URL is \(urlInString)")
         }
         
-        if let params = postParams{
+        if let params = postBodyParams{
             do{
                 let body = try JSONSerialization.data(withJSONObject: params, options: [])
                 request.httpBody = body
@@ -157,3 +222,14 @@ class WebService {
         
     }
 
+    
+    func queryString(_ value: String, params: [String: String]) -> String? {
+        var components = URLComponents(string: value)
+        components?.queryItems = params.map { element in URLQueryItem(name: element.key, value: element.value) }
+        
+        return components?.url?.absoluteString
+    }
+    
+    
+    
+}

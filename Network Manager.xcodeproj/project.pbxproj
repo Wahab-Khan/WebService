@@ -19,6 +19,7 @@
 		FA04E89D2319379900C1BA9E /* CompanyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04E89C2319379900C1BA9E /* CompanyInfo.swift */; };
 		FA04E8A22319457100C1BA9E /* RigisterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04E8A12319457100C1BA9E /* RigisterUser.swift */; };
 		FA04E8A42319722800C1BA9E /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04E8A32319722800C1BA9E /* URLs.swift */; };
+		FA04E8A7231BE7D400C1BA9E /* FinancialStatementsWithHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04E8A6231BE7D400C1BA9E /* FinancialStatementsWithHistory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		FA04E89C2319379900C1BA9E /* CompanyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyInfo.swift; sourceTree = "<group>"; };
 		FA04E8A12319457100C1BA9E /* RigisterUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RigisterUser.swift; sourceTree = "<group>"; };
 		FA04E8A32319722800C1BA9E /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
+		FA04E8A6231BE7D400C1BA9E /* FinancialStatementsWithHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialStatementsWithHistory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,11 +70,11 @@
 		FA04E879231529F300C1BA9E /* Network Manager */ = {
 			isa = PBXGroup;
 			children = (
+				FA04E8A52319933A00C1BA9E /* Controller */,
 				FA04E8992319150300C1BA9E /* Models */,
 				FA04E89223152B1F00C1BA9E /* Utils */,
 				FA04E88F23152A2A00C1BA9E /* Network Manager */,
 				FA04E87A231529F300C1BA9E /* AppDelegate.swift */,
-				FA04E87C231529F300C1BA9E /* ViewController.swift */,
 				FA04E87E231529F300C1BA9E /* Main.storyboard */,
 				FA04E884231529F400C1BA9E /* Assets.xcassets */,
 				FA04E886231529F400C1BA9E /* LaunchScreen.storyboard */,
@@ -105,8 +107,17 @@
 				FA04E89A2319151300C1BA9E /* BaseModel.swift */,
 				FA04E89C2319379900C1BA9E /* CompanyInfo.swift */,
 				FA04E8A12319457100C1BA9E /* RigisterUser.swift */,
+				FA04E8A6231BE7D400C1BA9E /* FinancialStatementsWithHistory.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		FA04E8A52319933A00C1BA9E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA04E87C231529F300C1BA9E /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA04E8A7231BE7D400C1BA9E /* FinancialStatementsWithHistory.swift in Sources */,
 				FA04E89B2319151300C1BA9E /* BaseModel.swift in Sources */,
 				FA04E8A42319722800C1BA9E /* URLs.swift in Sources */,
 				FA04E89423152B4200C1BA9E /* Utils.swift in Sources */,

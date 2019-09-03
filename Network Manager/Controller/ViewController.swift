@@ -25,13 +25,29 @@ class ViewController: UIViewController {
                                         }else{
                                             print(result.StatusMessage!)
                                         }
-
         }
 
+//        let param = ["period":"year",
+//                     "limit":"15"]
         
-//        let parameters: [String: Any] = [
-//            "EmailAddress": "mullah01@mailinator.com",
-//            "UserName": "Jack01",
+//        let url = URLs.queryString("InvestorsRelation/GetFinancialStatementsWithHistory?", params: param)
+//        print(URLs.baseUrl + url!)
+        
+//        WebService.shared.invokeApi(stringURL: "InvestorsRelation/GetFinancialStatementsWithHistory",
+//                                    requestType: .get,
+//                                    headers: Utils.getDefaultHeader(),
+//                                    params: param,
+//                                    BaseModel<FinancialStatementsWithHistory>.self) { (data) in
+//                                        if data.isSecussful(){
+//                                            print(data.Data?.Years)
+//                                        }else{
+//                                            print("Error")
+//                                        }
+//        }
+        
+//        let body: [String: Any] = [
+//            "EmailAddress": "mullah03@mailinator.com",
+//            "UserName": "Jack02",
 //            "Password": "danat",
 //            "FirstName": "jj",
 //            "LastName": "khan",
@@ -43,7 +59,7 @@ class ViewController: UIViewController {
 //        WebService.shared.invokeApi(stringURL: "http://argaamv2mobileapis.argaamnews.com/V2.2/json/register-user",
 //                                    requestType: .post,
 //                                    headers: Utils.getHeaderPost(),
-//                                    params: parameters as Dictionary<String, AnyObject>,
+//                                    body: body as Dictionary<String, AnyObject>,
 //                                    BaseModel<RigisterUser>.self) { (reslt) in
 //
 //                                        if reslt.isSecussful() {
@@ -52,7 +68,7 @@ class ViewController: UIViewController {
 //                                            print(reslt.StatusMessage!)
 //                                        }
 //        }
-        
+//
         
         
     }
