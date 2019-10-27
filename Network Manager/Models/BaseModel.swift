@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class BaseModel<T : Object,Decodable>: Object, Decodable {
+class BaseModel<T : Codable>: Codable {
     dynamic var StatusCode : Int?
     dynamic var StatusMessage : String?
     dynamic var Data : T?

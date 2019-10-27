@@ -129,7 +129,7 @@ class WebService {
 //    }
 
      //MARK: - URL + request type + header + param + body + model
-    func invokeApi<T:Decodable>(stringURL : String,
+    func invokeApi<T:Codable>(stringURL : String,
                                 requestType: RequestMethod = .get ,
                                 headers headerParams: Dictionary<String?,String?>? = [nil:nil],
                                 params queryParams: Dictionary<String?,String?>? = [nil:nil],
@@ -150,15 +150,18 @@ class WebService {
                                 let data = try JSONDecoder().decode(dataModel.self, from: dataSet)
                                 Completerion(data)
                                 if saveData {
-                                do{
-                                    let realm = try! Realm()
-                                    try realm.write {
-                                        realm.add(dataModel)
+                                    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("\(dataModel).plist")
+                                    print("\(String(describing: dataFilePath))")
+                                    print("\(dataModel)")
+                                    
+                                    let encoder =  PropertyListEncoder()
+                                    do{
+                                        let data = try? encoder.encode(data)
+                                        try data?.write(to: dataFilePath!)
+                                    }catch{
+                                        print("Error while saving data in Plist")
                                     }
-                                }catch{
-                                    print("Error saving Data : make sour that model is extended from Object class")
                                 }
-                            }
                             
                             }catch{
                                 print("Error while parsing Data: " , error)
@@ -243,5 +246,21 @@ class WebService {
     }
     
     
+    //MARK: - FatchDataFromPList
+    func fatchDataFromPlist<T:Codable>(dataModel:BaseModel<T>.Type) -> BaseModel<T>? {
+           
+        let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("\(dataModel).plist")
+        
+        if let data = try? Data(contentsOf: dataFilePath!){
+                 let decoder = PropertyListDecoder()
+                 do{
+                    let model = try decoder.decode(dataModel.self, from: data)
+                    return model
+                 }catch{
+                     print("Error while fatching data ")
+                 }
+             }
+        return nil
+    }
     
 }

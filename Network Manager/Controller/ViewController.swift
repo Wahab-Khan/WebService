@@ -15,18 +15,18 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         
-        WebService.shared.invokeApi(stringURL: URLs.companyInfoURL,
-                                    requestType: .get,
-                                    headers: Utils.getDefaultHeader(),
-                                    isSaveData: true,
-                                    dataModel: BaseModel<CompanyInfo>.self) { (result) in
-
-                                        if result.isSecussful(){
-                                            print(result.Data?.AddressAr)
-                                        }else{
-                                            print(result.StatusMessage!)
-                                        }
-        }
+//        WebService.shared.invokeApi(stringURL: URLs.companyInfoURL,
+//                                    requestType: .get,
+//                                    headers: Utils.getDefaultHeader(),
+//                                    isSaveData: true,
+//                                    dataModel: BaseModel<CompanyInfo>.self) { (result) in
+//
+//                                        if result.isSecussful(){
+//                                            print(result.Data?.AddressAr)
+//                                        }else{
+//                                            print(result.StatusMessage!)
+//                                        }
+//        }
 
         
 //        let param = ["period":"year",
@@ -70,7 +70,27 @@ class ViewController: UIViewController {
 //        }
 //
 //
+        
+        
+        //MARK :- facting data back from p list
+//        let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("BaseModel<CompanyInfo>.plist")
+//
+//        if let data = try? Data(contentsOf: dataFilePath!){
+//            let decoder = PropertyListDecoder()
+//            do{
+//                let model :BaseModel<CompanyInfo> = try decoder.decode(BaseModel<CompanyInfo>.self, from: data)
+//                print(model.Data?.AddressAr)
+//            }catch{
+//                print("Error while fatching data ")
+//            }
+//        }
+        
+        //that how call the fatch method 
+        let data = WebService.shared.fatchDataFromPlist(dataModel: BaseModel<CompanyInfo>.self)
+        print(data?.Data?.AddressEn)
+        
     }
+
 
 
 }
