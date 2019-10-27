@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1C244CD36C15327DF97A17BF /* Pods_Network_Manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CD2FDAC3EDDF4C130703A2F /* Pods_Network_Manager.framework */; };
+		A25E27522365910B0099C585 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25E27512365910B0099C585 /* Menu.swift */; };
 		FA04E87B231529F300C1BA9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04E87A231529F300C1BA9E /* AppDelegate.swift */; };
 		FA04E87D231529F300C1BA9E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04E87C231529F300C1BA9E /* ViewController.swift */; };
 		FA04E880231529F300C1BA9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA04E87E231529F300C1BA9E /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 		13E8B5A0CF371526B721E5E5 /* Pods-Network Manager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Network Manager.debug.xcconfig"; path = "Target Support Files/Pods-Network Manager/Pods-Network Manager.debug.xcconfig"; sourceTree = "<group>"; };
 		49DAA9F33FB65F18A37AB5E9 /* Pods-Network Manager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Network Manager.release.xcconfig"; path = "Target Support Files/Pods-Network Manager/Pods-Network Manager.release.xcconfig"; sourceTree = "<group>"; };
 		7CD2FDAC3EDDF4C130703A2F /* Pods_Network_Manager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Network_Manager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A25E27512365910B0099C585 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		FA04E877231529F300C1BA9E /* Network Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Network Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA04E87A231529F300C1BA9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA04E87C231529F300C1BA9E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,7 +72,6 @@
 				13E8B5A0CF371526B721E5E5 /* Pods-Network Manager.debug.xcconfig */,
 				49DAA9F33FB65F18A37AB5E9 /* Pods-Network Manager.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -133,6 +134,7 @@
 				FA04E89C2319379900C1BA9E /* CompanyInfo.swift */,
 				FA04E8A12319457100C1BA9E /* RigisterUser.swift */,
 				FA04E8A6231BE7D400C1BA9E /* FinancialStatementsWithHistory.swift */,
+				A25E27512365910B0099C585 /* Menu.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -265,6 +267,7 @@
 				FA04E8A42319722800C1BA9E /* URLs.swift in Sources */,
 				FA04E89423152B4200C1BA9E /* Utils.swift in Sources */,
 				FA04E87D231529F300C1BA9E /* ViewController.swift in Sources */,
+				A25E27522365910B0099C585 /* Menu.swift in Sources */,
 				FA04E883231529F300C1BA9E /* Network_Manager.xcdatamodeld in Sources */,
 				FA04E89D2319379900C1BA9E /* CompanyInfo.swift in Sources */,
 				FA04E89123152A5100C1BA9E /* WebService.swift in Sources */,

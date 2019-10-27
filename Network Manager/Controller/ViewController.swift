@@ -29,6 +29,24 @@ class ViewController: UIViewController {
 //        }
 
         
+        let param : [String?:String?] = [
+            "checkUpdate" : "false",
+            "deviceTypeID" : "1"
+        ]
+        WebService.shared.invokeApi(stringURL: "http://argaamv2mobileapis.argaamnews.com/v2.2/json/get-menu",
+                                    headers: Utils.getHeaderPost(),
+                                    params: param ,
+                                    isSaveData: true,
+                                    dataModel: BaseModel<Menu>.self) { (result) in
+                                        
+                                        if result.isSecussful(){
+                                            print(result.Data?.FooterMenuEn)
+                                           
+                                        }else{
+                                            print("Error while fatching data \(result)")
+                                        }
+        }
+        
 //        let param = ["period":"year",
 //                     "limit":"15"]
 //
@@ -85,9 +103,9 @@ class ViewController: UIViewController {
 //            }
 //        }
         
-        //that how call the fatch method 
-        let data = WebService.shared.fatchDataFromPlist(dataModel: BaseModel<CompanyInfo>.self)
-        print(data?.Data?.AddressEn)
+        //that how call the fatch method
+//        let data = WebService.shared.fatchDataFromPlist(dataModel: BaseModel<CompanyInfo>.self)
+//        print(data?.Data?.AddressEn)
         
     }
 

@@ -11,11 +11,13 @@ import Foundation
 
 class URLs {
  
-    static var baseUrl : String = "http://irapi.argaam.com/v1.0/json/" //BaseURL IR
+//    static var baseUrl : String = "http://irapi.argaam.com/v1.0/json/" //BaseURL IR
     
-//    static var baseUrl : String = ""
+    static var baseUrl : String = ""
     
     static let companyInfoURL = "InvestorsRelation/CompanyInfo"
+    
+    static let menuURL = "/get-menu"
     
 }
 

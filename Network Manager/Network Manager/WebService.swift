@@ -147,8 +147,18 @@ class WebService {
                         switch res {
                         case .success(let dataSet):
                             do{
+                                //parce data with JSONDecoder
                                 let data = try JSONDecoder().decode(dataModel.self, from: dataSet)
+                                
+                                /*if recponce is reived but status code of API is not 2oo
+                                ie url is correnct but device token is missing */
+                                if data.StatusCode != 200{
+                                    print(data.StatusMessage ?? "This is default status message")
+                                    return
+                                }
+                                //send recponce back
                                 Completerion(data)
+                                //save data in Plist
                                 if saveData {
                                     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("\(dataModel).plist")
                                     print("\(String(describing: dataFilePath))")
@@ -199,6 +209,7 @@ class WebService {
         
         request.httpMethod = requestType.rawValue
         
+        //assign haeader params
         if let header = headerParams{
             for (key ,value) in header{
                 request.addValue(value, forHTTPHeaderField: key)
@@ -206,7 +217,7 @@ class WebService {
         }else{
             print("header is nill : URL is \(urlInString)")
         }
-        
+        //assign body params
         if let params = postBodyParams{
             do{
                 let body = try JSONSerialization.data(withJSONObject: params, options: [])
@@ -221,7 +232,7 @@ class WebService {
                 completion(.failure(err))
                 return
             }
-            
+            //if did'nt recive any data
             if let respo = responce as? HTTPURLResponse{
                 print("Responce Code: \(String(describing: respo.statusCode))")
                 if respo.statusCode != 200 {
@@ -237,7 +248,7 @@ class WebService {
         
     }
 
-    
+    //assign the params
     func queryString(_ value: String, params: [String: String]) -> String? {
         var components = URLComponents(string: value)
         components?.queryItems = params.map { element in URLQueryItem(name: element.key, value: element.value) }
@@ -248,9 +259,10 @@ class WebService {
     
     //MARK: - FatchDataFromPList
     func fatchDataFromPlist<T:Codable>(dataModel:BaseModel<T>.Type) -> BaseModel<T>? {
-           
+        //show the path of Plist
         let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("\(dataModel).plist")
         
+        //Decode and return data in Plist
         if let data = try? Data(contentsOf: dataFilePath!){
                  let decoder = PropertyListDecoder()
                  do{
