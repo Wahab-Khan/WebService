@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 enum RequestMethod: String {
     case none = "NONE"
@@ -21,133 +22,144 @@ class WebService {
     
     static let shared = WebService()
     
-    
     private init() {
     }
     
     //MARK: -  URL + Model
-    func invokeApi<T:Decodable>(stringURL : String,
-                                _ dataModel : BaseModel<T>.Type,
-                                Completerion : @escaping (BaseModel<T>) -> ()){
-        
-        invokeApi(stringURL: stringURL,
-                  requestType: .get,
-                  headers: nil,
-                  params: nil,
-                  body: nil,
-                  dataModel,
-                  Completerion: Completerion)
-        
-    }
+//    func invokeApi<T:Decodable>(stringURL : String,
+//                                _ dataModel : BaseModel<T>.Type,
+//                                Completerion : @escaping (BaseModel<T>) -> ()){
+//
+//        invokeApi(stringURL: stringURL,
+//                  requestType: .get,
+//                  headers: nil,
+//                  params: nil,
+//                  body: nil,
+//                  dataModel,
+//                  Completerion: Completerion)
+//
+//    }
     
       //MARK: - URL + Request method + Model
-    func invokeApi<T:Decodable>(stringURL : String,
-                                requestType: RequestMethod,
-                                _ dataModel : BaseModel<T>.Type,
-                                Completerion : @escaping (BaseModel<T>) -> ()){
-        
-        invokeApi(stringURL: stringURL,
-                  requestType: requestType,
-                  headers: nil,
-                  params: nil,
-                  body : nil,
-                  dataModel,
-                  Completerion: Completerion)
-        
-    }
-    
-    //MARK: - URL + header + model
-    func invokeApi<T:Decodable>(stringURL : String,
-                                headers headerParams: Dictionary<String,String>?,
-                                _ dataModel : BaseModel<T>.Type,
-                                Completerion : @escaping (BaseModel<T>) -> ()){
-        
-        invokeApi(stringURL: stringURL,
-                  requestType: .get,
-                  headers: headerParams,
-                  params: nil,
-                  body: nil,
-                  dataModel,
-                  Completerion: Completerion)
-        
-    }
-    
-    
-    //MARK: - URL + request type + header + model
-    func invokeApi<T:Decodable>(stringURL : String,
-                                requestType: RequestMethod,
-                                headers headerParams: Dictionary<String,String>?,
-                                _ dataModel : BaseModel<T>.Type,
-                                Completerion : @escaping (BaseModel<T>) -> ()){
-        
-        invokeApi(stringURL: stringURL,
-                  requestType: requestType,
-                  headers: headerParams,
-                  params: nil,
-                  body: nil,
-                  dataModel,
-                  Completerion: Completerion)
-        
-    }
+//    func invokeApi<T:Decodable>(stringURL : String,
+//                                requestType: RequestMethod,
+//                                _ dataModel : BaseModel<T>.Type,
+//                                Completerion : @escaping (BaseModel<T>) -> ()){
+//
+//        invokeApi(stringURL: stringURL,
+//                  requestType: requestType,
+//                  headers: nil,
+//                  params: nil,
+//                  body : nil,
+//                  dataModel,
+//                  Completerion: Completerion)
+//
+//    }
+//
+//    //MARK: - URL + header + model
+//    func invokeApi<T:Decodable>(stringURL : String,
+//                                headers headerParams: Dictionary<String,String>?,
+//                                _ dataModel : BaseModel<T>.Type,
+//                                Completerion : @escaping (BaseModel<T>) -> ()){
+//
+//        invokeApi(stringURL: stringURL,
+//                  requestType: .get,
+//                  headers: headerParams,
+//                  params: nil,
+//                  body: nil,
+//                  dataModel,
+//                  Completerion: Completerion)
+//
+//    }
     
     
-     //MARK: - URL + request type + header + Params + model
-    func invokeApi<T:Decodable>(stringURL : String,
-                                requestType: RequestMethod,
-                                headers headerParams: Dictionary<String,String>?,
-                                params queryParams: Dictionary<String,String>?,
-                                _ dataModel : BaseModel<T>.Type,
-                                Completerion : @escaping (BaseModel<T>) -> ()){
-        
-        invokeApi(stringURL: stringURL,
-                  requestType: requestType,
-                  headers: headerParams,
-                  params: queryParams,
-                  body: nil,
-                  dataModel,
-                  Completerion: Completerion)
-        
-    }
+//    //MARK: - URL + request type + header + model
+//    func invokeApi<T:Decodable>(stringURL : String,
+//                                requestType: RequestMethod,
+//                                headers headerParams: Dictionary<String,String>?,
+//                                _ dataModel : BaseModel<T>.Type,
+//                                Completerion : @escaping (BaseModel<T>) -> ()){
+//
+//        invokeApi(stringURL: stringURL,
+//                  requestType: requestType,
+//                  headers: headerParams,
+//                  params: nil,
+//                  body: nil,
+//                  dataModel,
+//                  Completerion: Completerion)
+//
+//    }
+//
     
-    
-    //MARK: - URL + request type + header + body + model
-    func invokeApi<T:Decodable>(stringURL : String,
-                                requestType: RequestMethod,
-                                headers headerParams: Dictionary<String,String>?,
-                                body postBodyParams: Dictionary<String,AnyObject>?,
-                                _ dataModel : BaseModel<T>.Type,
-                                Completerion : @escaping (BaseModel<T>) -> ()){
-        
-        invokeApi(stringURL: stringURL,
-                  requestType: requestType,
-                  headers: headerParams,
-                  params: nil,
-                  body: postBodyParams,
-                  dataModel,
-                  Completerion: Completerion)
-        
-    }
+//     //MARK: - URL + request type + header + Params + model
+//    func invokeApi<T:Decodable>(stringURL : String,
+//                                requestType: RequestMethod,
+//                                headers headerParams: Dictionary<String,String>?,
+//                                params queryParams: Dictionary<String,String>?,
+//                                _ dataModel : BaseModel<T>.Type,
+//                                Completerion : @escaping (BaseModel<T>) -> ()){
+//
+//        invokeApi(stringURL: stringURL,
+//                  requestType: requestType,
+//                  headers: headerParams,
+//                  params: queryParams,
+//                  body: nil,
+//                  dataModel,
+//                  Completerion: Completerion)
+//
+//    }
+//
+//
+//    //MARK: - URL + request type + header + body + model
+//    func invokeApi<T:Decodable>(stringURL : String,
+//                                requestType: RequestMethod,
+//                                headers headerParams: Dictionary<String,String>?,
+//                                body postBodyParams: Dictionary<String,AnyObject>?,
+//                                _ dataModel : BaseModel<T>.Type,
+//                                Completerion : @escaping (BaseModel<T>) -> ()){
+//
+//        invokeApi(stringURL: stringURL,
+//                  requestType: requestType,
+//                  headers: headerParams,
+//                  params: nil,
+//                  body: postBodyParams,
+//                  dataModel,
+//                  Completerion: Completerion)
+//
+//    }
 
      //MARK: - URL + request type + header + param + body + model
     func invokeApi<T:Decodable>(stringURL : String,
-                                requestType: RequestMethod,
-                                headers headerParams: Dictionary<String,String>?,
-                                params queryParams: Dictionary<String,String>?,
-                                body postBodyParams: Dictionary<String,AnyObject>?,
-                                _ dataModel : BaseModel<T>.Type,
+                                requestType: RequestMethod = .get ,
+                                headers headerParams: Dictionary<String?,String?>? = [nil:nil],
+                                params queryParams: Dictionary<String?,String?>? = [nil:nil],
+                                body postBodyParams: Dictionary<String?,AnyObject?>? = [nil:nil],
+                                isSaveData saveData : Bool = false,
+                                dataModel : BaseModel<T>.Type,
                                 Completerion : @escaping (BaseModel<T>) -> ()){
         
         
         sendRequest(urlInString: stringURL,
                     requestType: requestType,
-                    headers: headerParams,
-                    params: queryParams,
-                    body: postBodyParams) { (res) in
+                    headers: headerParams as? Dictionary<String, String>,
+                    params: queryParams as? Dictionary<String, String>,
+                    body: postBodyParams as? Dictionary<String, AnyObject>) { (res) in
                         switch res {
                         case .success(let dataSet):
                             do{
                                 let data = try JSONDecoder().decode(dataModel.self, from: dataSet)
                                 Completerion(data)
+                                if saveData {
+                                do{
+                                    let realm = try! Realm()
+                                    try realm.write {
+                                        realm.add(dataModel)
+                                    }
+                                }catch{
+                                    print("Error saving Data : make sour that model is extended from Object class")
+                                }
+                            }
+                            
                             }catch{
                                 print("Error while parsing Data: " , error)
                             }

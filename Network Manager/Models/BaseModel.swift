@@ -7,13 +7,13 @@
 //
 
 import Foundation
+import RealmSwift
 
-
-struct BaseModel<T : Decodable>: Decodable {
-    var StatusCode : Int?
-    var StatusMessage : String?
-    var Data : T?
-    var ErrorMessage : String?
+class BaseModel<T : Object,Decodable>: Object, Decodable {
+    dynamic var StatusCode : Int?
+    dynamic var StatusMessage : String?
+    dynamic var Data : T?
+    dynamic var ErrorMessage : String?
     
     
     func isSecussful() -> Bool {

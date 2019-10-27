@@ -18,21 +18,20 @@ class ViewController: UIViewController {
         WebService.shared.invokeApi(stringURL: URLs.companyInfoURL,
                                     requestType: .get,
                                     headers: Utils.getDefaultHeader(),
-                                    BaseModel<CompanyInfo>.self) { (result) in
+                                    isSaveData: true,
+                                    dataModel: BaseModel<CompanyInfo>.self) { (result) in
 
                                         if result.isSecussful(){
-                                            print(result.Data!)
+                                            print(result.Data?.AddressAr)
                                         }else{
                                             print(result.StatusMessage!)
                                         }
         }
 
+        
 //        let param = ["period":"year",
 //                     "limit":"15"]
-        
-//        let url = URLs.queryString("InvestorsRelation/GetFinancialStatementsWithHistory?", params: param)
-//        print(URLs.baseUrl + url!)
-        
+//
 //        WebService.shared.invokeApi(stringURL: "InvestorsRelation/GetFinancialStatementsWithHistory",
 //                                    requestType: .get,
 //                                    headers: Utils.getDefaultHeader(),
@@ -46,8 +45,8 @@ class ViewController: UIViewController {
 //        }
         
 //        let body: [String: Any] = [
-//            "EmailAddress": "mullah03@mailinator.com",
-//            "UserName": "Jack02",
+//            "EmailAddress": "mullah04@mailinator.com",
+//            "UserName": "Jack03",
 //            "Password": "danat",
 //            "FirstName": "jj",
 //            "LastName": "khan",
@@ -60,6 +59,7 @@ class ViewController: UIViewController {
 //                                    requestType: .post,
 //                                    headers: Utils.getHeaderPost(),
 //                                    body: body as Dictionary<String, AnyObject>,
+//                                    isSaveData : false,
 //                                    BaseModel<RigisterUser>.self) { (reslt) in
 //
 //                                        if reslt.isSecussful() {
@@ -69,8 +69,7 @@ class ViewController: UIViewController {
 //                                        }
 //        }
 //
-        
-        
+//
     }
 
 

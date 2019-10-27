@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct RigisterUser : Decodable {
+class RigisterUser : Decodable {
     var WasSuccessful : String = ""
     var ErrorMessage : String = ""
     var Key : String = ""

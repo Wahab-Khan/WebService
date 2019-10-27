@@ -9,13 +9,13 @@
 import Foundation
 
 
-struct FinancialStatementsWithHistory :Decodable {
+class FinancialStatementsWithHistory :Decodable {
     
     var Period : String = ""
     var Year : Int = 0
     var Years : [Year]
 }
 
-struct Year : Decodable {
+class Year : Decodable {
     var Year : String = ""
 }

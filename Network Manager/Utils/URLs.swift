@@ -13,6 +13,8 @@ class URLs {
  
     static var baseUrl : String = "http://irapi.argaam.com/v1.0/json/" //BaseURL IR
     
+//    static var baseUrl : String = ""
+    
     static let companyInfoURL = "InvestorsRelation/CompanyInfo"
     
 }
