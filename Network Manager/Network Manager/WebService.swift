@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RealmSwift
 
 enum RequestMethod: String {
     case none = "NONE"
@@ -274,5 +273,35 @@ class WebService {
              }
         return nil
     }
+    
+    
+    func deletePlist<T:Codable>(dataModel:BaseModel<T>.Type) {
+        //get file path url
+        let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("\(dataModel).plist")
+        
+        if dataFilePath != nil {
+            let filePath : String = dataFilePath!.path
+//            do{
+                //convert path to string
+//                filePath = try String(contentsOf: dataFilePath!)
+                do {
+                    //check if file exist with that path
+                    if FileManager.default.fileExists(atPath: filePath) {
+                        //delet file
+                        try FileManager.default.removeItem(atPath: filePath)
+                        print("file deleted form path : \(dataFilePath!)")
+                    }else{
+                        print("file doest exist")
+                    }
+                } catch {
+                    print(error)
+                }
+                
+//            }catch{
+//                print(error)
+//            }
+        }
+    }
+    
     
 }

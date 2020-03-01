@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RealmSwift
 
 class CompanyInfo : Codable {
     var NameAr : String = ""

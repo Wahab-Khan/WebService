@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RealmSwift
 
 class BaseModel<T : Codable>: Codable {
     dynamic var StatusCode : Int?

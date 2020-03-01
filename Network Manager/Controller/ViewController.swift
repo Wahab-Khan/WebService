@@ -33,19 +33,28 @@ class ViewController: UIViewController {
             "checkUpdate" : "false",
             "deviceTypeID" : "1"
         ]
-        WebService.shared.invokeApi(stringURL: "http://argaamv2mobileapis.argaamnews.com/v2.2/json/get-menu",
-                                    headers: Utils.getHeaderPost(),
-                                    params: param ,
-                                    isSaveData: true,
-                                    dataModel: BaseModel<Menu>.self) { (result) in
-                                        
-                                        if result.isSecussful(){
-                                            print(result.Data?.FooterMenuEn)
-                                           
-                                        }else{
-                                            print("Error while fatching data \(result)")
-                                        }
-        }
+//        WebService.shared.invokeApi(stringURL: "http://argaamv2mobileapis.argaamnews.com/v2.2/json/get-menu",
+//                                    headers: Utils.getHeaderPost(),
+//                                    params: param ,
+//                                    isSaveData: true,
+//                                    dataModel: BaseModel<Menu>.self) { (result) in
+//
+//                                        if result.isSecussful(){
+//                                            print(result.Data?.FooterMenuEn)
+////                                             WebService.shared.deletePlist(dataModel: BaseModel<Menu>.self)
+//
+////                                            let data = WebService.shared.fatchDataFromPlist(dataModel: BaseModel<Menu>.self)
+////
+////                                            print("data from plist \(data?.Data?.FooterMenu?.count)")
+//                                        }else{
+//                                            print("Error while fatching data \(result)")
+//                                        }
+//        }
+        
+         WebService.shared.deletePlist(dataModel: BaseModel<Menu>.self)
+        
+//        let data = WebService.shared.fatchDataFromPlist(dataModel: BaseModel<Menu>.self)
+//        print(data!)
         
 //        let param = ["period":"year",
 //                     "limit":"15"]
