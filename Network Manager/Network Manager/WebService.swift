@@ -16,11 +16,21 @@ enum RequestMethod: String {
     case delete = "DELETE"
 }
 
+//This deleget methods call on api respose
+protocol RestendDelegate {
+    //call when api response success
+    func restDidReceiveResponse<T:Codable>(baseModel: BaseModel<T>)
+    //call when api response fail
+    func restDidFinishedWithError(isError: Bool, statusMessage: String)
+}
+
 class WebService {
     
-    static let shared = WebService()
+    private var delegate : RestendDelegate? = nil
     
-    private init() {}
+    init(delegate : RestendDelegate) {
+        self.delegate = delegate
+    }
     
     
     //MARK: - URL + request type + header + param + body + model
@@ -30,8 +40,7 @@ class WebService {
                             URLparams queryParams: Dictionary<String?,Any?>? = [nil:nil],
                             body postBodyParams: Dictionary<String?,AnyObject?>? = [nil:nil],
                             isSaveData saveData : Bool = false,
-                            dataModel : BaseModel<T>.Type,
-                            Completerion : @escaping (BaseModel<T>) -> ()){
+                            dataModel : BaseModel<T>.Type){
         
         
         sendRequest(urlInString: stringURL,
@@ -48,11 +57,12 @@ class WebService {
                     /*if recponce is reived but status code of API is not 2oo
                      ie url is correnct but device token is missing */
                     if data.StatusCode != 200{
-                        print(data.StatusMessage ?? "This is default status message")
+                        self.delegate?.restDidFinishedWithError(isError: true, statusMessage: data.StatusMessage!)
                         return
                     }
                     //send recponce back
-                    Completerion(data)
+                    self.delegate?.restDidReceiveResponse(baseModel: data)
+                    
                     //save data in Plist
                     if saveData {
                         let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("\(dataModel).plist")
