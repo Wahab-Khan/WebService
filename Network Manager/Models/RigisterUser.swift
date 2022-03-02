@@ -9,7 +9,7 @@
 import Foundation
 
 
-class RigisterUser : Decodable {
+class RigisterUser : Codable {
     var WasSuccessful : String = ""
     var ErrorMessage : String = ""
     var Key : String = ""
