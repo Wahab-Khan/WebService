@@ -10,7 +10,6 @@ import Foundation
 
 class Utils {
     
-    
     static func getDefaultHeader() -> Dictionary<String,String>{
         return ["Device-Token":"asdf",
                 "App-Secret":"63CB056B7AE5CF544C1FAE872E9A7453"]

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52C546F82875B2EE00C8E571 /* NetWorkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C546F72875B2EE00C8E571 /* NetWorkRequest.swift */; };
+		52C546FB2875B43100C8E571 /* AuthServiceEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C546FA2875B43100C8E571 /* AuthServiceEndPoints.swift */; };
+		52C546FE2875B52600C8E571 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C546FD2875B52600C8E571 /* Environment.swift */; };
+		52C547012875B75400C8E571 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C547002875B75400C8E571 /* AuthService.swift */; };
+		52C547042875B94000C8E571 /* AuthResponce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C547032875B94000C8E571 /* AuthResponce.swift */; };
 		FA04E87B231529F300C1BA9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04E87A231529F300C1BA9E /* AppDelegate.swift */; };
 		FA04E87D231529F300C1BA9E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04E87C231529F300C1BA9E /* ViewController.swift */; };
 		FA04E880231529F300C1BA9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA04E87E231529F300C1BA9E /* Main.storyboard */; };
@@ -23,6 +28,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52C546F72875B2EE00C8E571 /* NetWorkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkRequest.swift; sourceTree = "<group>"; };
+		52C546FA2875B43100C8E571 /* AuthServiceEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceEndPoints.swift; sourceTree = "<group>"; };
+		52C546FD2875B52600C8E571 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		52C547002875B75400C8E571 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		52C547032875B94000C8E571 /* AuthResponce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponce.swift; sourceTree = "<group>"; };
 		FA04E877231529F300C1BA9E /* Network Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Network Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA04E87A231529F300C1BA9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA04E87C231529F300C1BA9E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +61,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52C546F92875B42200C8E571 /* Eidpoints */ = {
+			isa = PBXGroup;
+			children = (
+				52C546FA2875B43100C8E571 /* AuthServiceEndPoints.swift */,
+			);
+			path = Eidpoints;
+			sourceTree = "<group>";
+		};
+		52C546FC2875B51C00C8E571 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				52C546FD2875B52600C8E571 /* Environment.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
+		52C546FF2875B71200C8E571 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				52C547002875B75400C8E571 /* AuthService.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		52C547022875B92200C8E571 /* Responces */ = {
+			isa = PBXGroup;
+			children = (
+				52C547032875B94000C8E571 /* AuthResponce.swift */,
+			);
+			path = Responces;
+			sourceTree = "<group>";
+		};
 		FA04E86E231529F300C1BA9E = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +112,7 @@
 		FA04E879231529F300C1BA9E /* Network Manager */ = {
 			isa = PBXGroup;
 			children = (
+				52C546FC2875B51C00C8E571 /* Environment */,
 				FA04E8A52319933A00C1BA9E /* Controller */,
 				FA04E8992319150300C1BA9E /* Models */,
 				FA04E89223152B1F00C1BA9E /* Utils */,
@@ -87,7 +130,11 @@
 		FA04E88F23152A2A00C1BA9E /* Network Manager */ = {
 			isa = PBXGroup;
 			children = (
+				52C547022875B92200C8E571 /* Responces */,
+				52C546FF2875B71200C8E571 /* Requests */,
+				52C546F92875B42200C8E571 /* Eidpoints */,
 				FA04E89023152A5100C1BA9E /* WebService.swift */,
+				52C546F72875B2EE00C8E571 /* NetWorkRequest.swift */,
 			);
 			path = "Network Manager";
 			sourceTree = "<group>";
@@ -194,13 +241,18 @@
 				FA04E8A7231BE7D400C1BA9E /* FinancialStatementsWithHistory.swift in Sources */,
 				FA04E89B2319151300C1BA9E /* BaseModel.swift in Sources */,
 				FA04E8A42319722800C1BA9E /* URLs.swift in Sources */,
+				52C547042875B94000C8E571 /* AuthResponce.swift in Sources */,
 				FA04E89423152B4200C1BA9E /* Utils.swift in Sources */,
+				52C546FB2875B43100C8E571 /* AuthServiceEndPoints.swift in Sources */,
 				FA04E87D231529F300C1BA9E /* ViewController.swift in Sources */,
 				FA04E883231529F300C1BA9E /* Network_Manager.xcdatamodeld in Sources */,
 				FA04E89D2319379900C1BA9E /* CompanyInfo.swift in Sources */,
+				52C546FE2875B52600C8E571 /* Environment.swift in Sources */,
 				FA04E89123152A5100C1BA9E /* WebService.swift in Sources */,
+				52C546F82875B2EE00C8E571 /* NetWorkRequest.swift in Sources */,
 				FA04E8A22319457100C1BA9E /* RigisterUser.swift in Sources */,
 				FA04E87B231529F300C1BA9E /* AppDelegate.swift in Sources */,
+				52C547012875B75400C8E571 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +329,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -332,7 +384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
