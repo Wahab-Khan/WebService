@@ -36,9 +36,9 @@ public class NativeRequestable: Requestable {
 //            .debounce(for: 0.8, scheduler: RunLoop.main) // uncomment this when using search
             .tryMap { output in
                      // throw an error if response is nil
-//                guard output.response is HTTPURLResponse else {
-//                    throw NetworkError.serverError(code: 0, error: "Server error")
-//                }
+                guard output.response is HTTPURLResponse else {
+                    throw NetworkError.serverError(code: 0, error: "Server error")
+                }
                 return output.data
             }
 //            .switchToLatest()
